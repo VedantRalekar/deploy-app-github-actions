@@ -3,7 +3,7 @@ const express = require("express");
 const app = express();
 
 app.get("/", (req, res)=>{
-   return res.json({msg : "Welcome to ci/cd pipeline setup using gihub actions.."});
+   return res.json({msg : "Welcome to ci/cd pipeline"});
 })
 
 app.listen(3000, ()=>{
