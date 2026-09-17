@@ -1,27 +1,25 @@
-name : Deploy Nodejs Allication 
+name: Deploy Nodejs Application
 
-on: 
+on:
   push:
-    braches:
-        - main
+    branches:
+      - main
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Chechout Code
+      - name: Checkout Code
         uses: actions/checkout@v4
 
       - name: Deploy Via SSH
         uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.SSH_HOST }}
-          username: root
+          username: ubuntu
           key: ${{ secrets.SSH_KEY }}
           script: |
-           cd /home/ubuntu/deploy-app-github-actions
-           git pull
-           docker compose up -d --build
-
-    
+            cd /home/ubuntu/deploy-app-github-actions
+            git pull
+            sudo docker compose up -d --build
